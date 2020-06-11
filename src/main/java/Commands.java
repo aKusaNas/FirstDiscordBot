@@ -23,7 +23,7 @@ public class Commands extends ListenerAdapter {
     private LookingForGroup lfg = new LookingForGroup();
     private RegisterRegiment regr = new RegisterRegiment();
     private GetKDRole kdr = new GetKDRole();
-    private WorkerProcess Bot;
+    private WorkerProcess Bot = new WorkerProcess();
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 	Message message = event.getMessage(); // The message that was received.

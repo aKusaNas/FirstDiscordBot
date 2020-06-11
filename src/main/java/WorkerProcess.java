@@ -12,17 +12,20 @@ public class WorkerProcess {
 
     public static JDA jda;
     public String prefix = "?";
+    public static String HKEY = System.getenv("DISCORD_KEY");
 
     @SuppressWarnings("deprecation")
     public static void main(String[] args) {
 
 	BasicConfigurator.configure();
+	
+	
 
 	try {
-	    jda = new JDABuilder(AccountType.BOT).setToken("BOT.TOKEN").build();
+	    jda = new JDABuilder(AccountType.BOT).setToken(HKEY).build();
 	    jda.getPresence().setStatus(OnlineStatus.ONLINE);
 	    jda.getPresence().setActivity(Activity.playing("?info"));
-
+	    
 	    jda.awaitReady(); // Blocking guarantees that JDA will be completely loaded.
 	    System.out.println("      //////////////////////////////");
 	    System.out.println("     ////                      ////");
