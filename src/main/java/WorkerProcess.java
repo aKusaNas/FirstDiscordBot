@@ -11,7 +11,6 @@ import net.dv8tion.jda.api.entities.Activity;
 public class WorkerProcess {
 
     public static JDA jda;
-    public String prefix = "?";
     public static String HKEY = System.getenv("DISCORD_KEY");
 
     @SuppressWarnings("deprecation")

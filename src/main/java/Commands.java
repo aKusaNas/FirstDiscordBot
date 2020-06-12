@@ -17,13 +17,11 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Commands extends ListenerAdapter {
 
-    // private String avatar =
-    // "https://images-ext-1.discordapp.net/external/bwdl6cz65cP9iEH4VtSUQeROfyn9uyyAAYYN0cAx6zI/https/cdn.discordapp.com/avatars/122769236950122498/9597093aa42ceeddbcfa280782a24e49.png";
+    private static final String PREFIX = "?";
     private EmbedBuilder info = new EmbedBuilder();
     private LookingForGroup lfg = new LookingForGroup();
     private RegisterRegiment regr = new RegisterRegiment();
     private GetKDRole kdr = new GetKDRole();
-    private WorkerProcess Bot = new WorkerProcess();
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 	Message message = event.getMessage(); // The message that was received.
@@ -33,10 +31,10 @@ public class Commands extends ListenerAdapter {
 
 	if (!event.getAuthor().isBot()) { // TIKRINA AR BOTAS KVIECIA KOMANDA
 
-	    if (args[0].equalsIgnoreCase(Bot.prefix + "info")) { // INFO IF BLOCK
+	    if (args[0].equalsIgnoreCase(PREFIX + "info")) { // INFO IF BLOCK
 		lfg.infoLFG(event);
 
-	    } else if (args[0].equalsIgnoreCase(Bot.prefix + "lfg")) { // LOOKING FOR PARTY IF BLOCK
+	    } else if (args[0].equalsIgnoreCase(PREFIX + "lfg")) { // LOOKING FOR PARTY IF BLOCK
 		if (args.length == 1) {
 		    lfg.lookingForGroup(event, args);
 		} else if (args[1].contentEquals("info")) {
@@ -44,7 +42,7 @@ public class Commands extends ListenerAdapter {
 		} else {
 		    lfg.lookingForGroup(event, args);
 		}
-	    } else if (args[0].equalsIgnoreCase(Bot.prefix + "regiment") // REGISTRACIJA REGIMENTU
+	    } else if (args[0].equalsIgnoreCase(PREFIX + "regiment") // REGISTRACIJA REGIMENTU
 		    && message.getChannel().equals(regimchannel)) {
 		if (args.length <= 1) {
 		    message.delete().queueAfter(15, TimeUnit.SECONDS);
@@ -59,7 +57,7 @@ public class Commands extends ListenerAdapter {
 	    }
 
 	    // K/D ROLE IF BLOCK BROKEN KOL ACTIVISION NENUIMS AUTH KEYS
-	    if (args[0].equals(Bot.prefix + "role")) {
+	    if (args[0].equals(PREFIX + "role")) {
 		int check = args.length;
 		if (check == 1) {
 		    kdr.infoEmbed(event);
